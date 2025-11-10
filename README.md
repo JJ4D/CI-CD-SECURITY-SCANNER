@@ -86,13 +86,11 @@ Want to reuse this baseline for another service? Copy the scaffolding:
 2. **Swap the application pieces** (e.g., replace FastAPI with your framework) and update the tests.
 3. **Tweak the Dockerfile** to build the new runtime, keeping the multi-stage / non-root pattern.
 4. **Replace scanners as needed** (Bandit → ESLint, pip-audit → npm audit, etc.) but keep the same structure of “test → dependency scan → image scan.”
-5. **Add IaC or cloud checks** (e.g., Checkov, Terraform validation) to match the target environment.
 
 This approach keeps the “policy rails” identical while letting individual apps evolve independently.
 
 ## Roadmap & Enhancements
 
-- Explore cloud posture automation (e.g., AWS security checks) once the core pipeline is battle-tested.
 - Include a Terraform sample and run Checkov in CI for IaC scanning.
 - Publish baseline security metrics (results summary badge, SBOM export).
 - Expand the FastAPI app with a real endpoint and integration tests.
