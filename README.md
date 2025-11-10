@@ -91,7 +91,6 @@ This approach keeps the “policy rails” identical while letting individual ap
 
 ## Roadmap & Enhancements
 
-- Include a Terraform sample and run Checkov in CI for IaC scanning.
 - Publish baseline security metrics (results summary badge, SBOM export).
 - Expand the FastAPI app with a real endpoint and integration tests.
 
