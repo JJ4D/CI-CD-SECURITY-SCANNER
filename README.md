@@ -4,7 +4,7 @@ Lean FastAPI microservice wired with a DevSecOps-focused pipeline. This repo dem
 
 ## Why This Project?
 
-I built this project to illustrate how to integrate security into CI/CD in code. It shows:
+Interviewers often ask, “How do you integrate security into CI/CD?” I built this project to illustrate that in code. It shows:
 
 - A minimal, production-style FastAPI health service.
 - Automated testing, linting, and security scans (Bandit, pip-audit, Trivy) triggered locally and in GitHub Actions.
@@ -74,13 +74,25 @@ If anything fails, the workflow blocks the merge—showing “security as code�
 - **Security gating:** Walk through the CI workflow and how each stage can block insecure artifacts.
 - **Dependency hygiene:** Discuss why pip-audit caught issues (e.g., outdated Starlette) and how you fixed them.
 - **Container hardening:** Mention multi-stage builds, removing build toolchains, and running as a non-root user.
-- **Extensibility:** Highlight the roadmap below—AWS posture checks, Checkov on Terraform, GitHub code scanning, etc.
+- **Extensibility:** Highlight the roadmap below—future IaC checks, GitHub code scanning, etc.
 
 These points help demonstrate practical DevSecOps judgment, not just tool familiarity.
 
+## Adapting to Other Applications
+
+Want to reuse this baseline for another service? Copy the scaffolding:
+
+1. **Clone the workflow files** (`.github/workflows/ci.yml`, `.pre-commit-config.yaml`, `Makefile`) into the new repo.
+2. **Swap the application pieces** (e.g., replace FastAPI with your framework) and update the tests.
+3. **Tweak the Dockerfile** to build the new runtime, keeping the multi-stage / non-root pattern.
+4. **Replace scanners as needed** (Bandit → ESLint, pip-audit → npm audit, etc.) but keep the same structure of “test → dependency scan → image scan.”
+5. **Add IaC or cloud checks** (e.g., Checkov, Terraform validation) to match the target environment.
+
+This approach keeps the “policy rails” identical while letting individual apps evolve independently.
+
 ## Roadmap & Enhancements
 
-- Add a boto3-driven script to validate AWS account posture (e.g., S3 encryption checks).
+- Explore cloud posture automation (e.g., AWS security checks) once the core pipeline is battle-tested.
 - Include a Terraform sample and run Checkov in CI for IaC scanning.
 - Publish baseline security metrics (results summary badge, SBOM export).
 - Expand the FastAPI app with a real endpoint and integration tests.
