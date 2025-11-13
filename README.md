@@ -4,7 +4,7 @@ Lean FastAPI microservice wired with a DevSecOps-focused pipeline. This repo dem
 
 ## Why This Project?
 
-I built this project to illustrate that how to implement security in CI/CD. It shows:
+I built this project to illustrat how to implement security in CI/CD. It shows:
 
 - A minimal, production-style FastAPI health service.
 - Automated testing, linting, and security scans (Bandit, pip-audit, Trivy) triggered locally and in GitHub Actions.
