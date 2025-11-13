@@ -4,7 +4,7 @@ Lean FastAPI microservice wired with a DevSecOps-focused pipeline. This repo dem
 
 ## Why This Project?
 
-Interviewers often ask, “How do you integrate security into CI/CD?” I built this project to illustrate that in code. It shows:
+I built this project to illustrate that how to implement security in CI/CD. It shows:
 
 - A minimal, production-style FastAPI health service.
 - Automated testing, linting, and security scans (Bandit, pip-audit, Trivy) triggered locally and in GitHub Actions.
@@ -68,15 +68,14 @@ If anything fails, the workflow blocks the merge—showing “security as code�
 | Container      | Hardened Dockerfile + Trivy           | Multi-stage build, non-root user, high/critical gating   |
 | Process        | GitHub Actions workflow               | Guarantees parity between local + CI checks              |
 
-## Conversation Starters / Interview Talking Points
+## Projecg Goals
 
 - **Shift-left mindset:** Explain how pre-commit hooks prevent bad code and secrets from entering history.
 - **Security gating:** Walk through the CI workflow and how each stage can block insecure artifacts.
-- **Dependency hygiene:** Discuss why pip-audit caught issues (e.g., outdated Starlette) and how you fixed them.
+- **Dependency hygiene:** Discuss why pip-audit caught issues (e.g., outdated Starlette) and how they can be fixed. 
 - **Container hardening:** Mention multi-stage builds, removing build toolchains, and running as a non-root user.
 - **Extensibility:** Highlight the roadmap below—future IaC checks, GitHub code scanning, etc.
 
-These points help demonstrate practical DevSecOps judgment, not just tool familiarity.
 
 ## Adapting to Other Applications
 
